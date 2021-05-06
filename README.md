@@ -15,3 +15,27 @@ IVDM analyses the tempo of a piece of music and divides it into segments spannin
 
 Example using Rhapsody in Blue by George Gershwin:  
 ![Spectrogram example](./examples/rhapsody_in_blue_spectrogram.png)
+
+## Usage
+
+```
+ivdm -- makes 4-Dimensional music
+Usage:
+    ivdm.py <input> <output> <segment_length>
+Usage (Windows):
+    python3 ivdm.py <input> <output> <segment_length>
+Options:
+    <input>             Input audio file.
+    <output>            Output audio file. Should be WAV or FLAC.
+                        Default is './ivdm_out.wav'
+    <segment_length>    Length of segments used in making 4-D music. Measured in the number of beats.
+                        Default is 32. Longer sengment lengths give cleaner music that resembles the
+                        input more. Shorter segment lengths give music with more sounds at any moment.
+    -h                  Show this message.
+Examples:
+    ivdm.py ./music.wav
+    ivdm.py ./music2.mp3 ./musictwo.wav 64
+Examples (Windows):
+    python3 ivdm.py ./music.wav
+    python3 ivdm.py ./music2.mp3 ./musictwo.wav 64
+```
