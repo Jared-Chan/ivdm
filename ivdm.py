@@ -82,7 +82,8 @@ def tile_segments(path, beats, debug=False):
 def process_audio(input_path, output_path, segment_length):
   sample_rate, audio_array = tile_segments(input_path, segment_length)
   audio_array = np.transpose(audio_array)
-  sf.write(output_path, audio_array, sample_rate)
+  format = output_path.split('.')[-1].upper()
+  sf.write(output_path, audio_array, sample_rate, format=format)
 
 
 
@@ -97,7 +98,7 @@ if __name__=='__main__':
 
     Options:
         <input>             Input audio file.
-        <output>            Output audio file. Should be WAV or FLAC.
+        <output>            Output audio file. Should be WAV or FLAC. WAV is recommended.
                             Default is './ivdm_out.wav'
         <segment_length>    Length of segments used in making 4-D music. Measured in the number of beats.
                             Default is 32. Longer sengment lengths give cleaner music that resembles the
