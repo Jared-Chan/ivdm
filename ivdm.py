@@ -16,19 +16,20 @@ def tile_segments(path, beats, debug=False):
   y_duo, sr = librosa.load(path, sr=None, mono=False)
 
   combined_duo = []
+
+  tempo, beat_frames = librosa.beat.beat_track(y=y_duo[0], sr=sr)
+  beat_samples = librosa.frames_to_samples(beat_frames)
+
+  # Find the number of samples between two beats
+  intervals = [beat_samples[0]]
+  for i in range(1, len(beat_samples)):
+    intervals = np.append(intervals, beat_samples[i] - beat_samples[i-1])
+  interval = scipy.stats.mode(intervals)
+
+  interval = interval[0][0] * beats
+  num_of_seg = math.floor(y_duo[0].shape / interval)
+
   for y in y_duo:
-    tempo, beat_frames = librosa.beat.beat_track(y=y, sr=sr)
-    beat_samples = librosa.frames_to_samples(beat_frames)
-
-    # Find the number of samples between two beats
-    intervals = [beat_samples[0]]
-    for i in range(1, len(beat_samples)):
-      intervals = np.append(intervals, beat_samples[i] - beat_samples[i-1])
-    interval = scipy.stats.mode(intervals)
-
-    interval = interval[0][0] * beats
-    num_of_seg = math.floor(y.shape / interval)
-
     # Split audio into segments and tile each segment
     tiled_segments = []
     for i in range(0, num_of_seg):
@@ -62,7 +63,6 @@ def tile_segments(path, beats, debug=False):
         start = interval * j
         end = start + interval
         tiled_segments[i][ start: end] *= factor**3
-
 
     combined_segments = np.sum(np.array(tiled_segments), axis=0)
     combined_duo.append(combined_segments)
