@@ -27,14 +27,12 @@ Usage (Windows):
    -  `python3 ivdm.py <input> <output> <segment_length>`
     
 Options:  
-   -  `<input>`             Input audio file.  
-   -  `<output>`            Output audio file. WAV is recommended.  
-                          For all available formats, see `soundfile.available_formats()`  
-                          Default is `./ivdm_out.wav`  
-   -  `<segment_length>`    Length of segments used in making 4-D music. Measured in the number of beats.  
-                        Default is `32`. Longer sengment lengths give cleaner music that resembles the  
-                        input more. Shorter segment lengths give music with more sounds at any moment.  
-   -  `-h`                  Show this message.  
+ | | |
+ |-|-|
+   |  `<input>`     | Input audio file.  |
+   |  `<output>`    |  Output audio file. WAV is recommended. For all available formats, see `soundfile.available_formats()` Default is `./ivdm_out.wav`  |
+   | `<segment_length>`  | Length of segments used in making 4-D music. Measured in the number of beats. Default is `32`. Longer sengment lengths give cleaner music that resembles the input more. Shorter segment lengths give music with more sounds at any moment.  |
+   | `-h` |       Show help message.  |
     
 Examples:  
    -  `ivdm.py ./music.wav`  
