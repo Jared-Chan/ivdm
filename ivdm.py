@@ -98,7 +98,8 @@ if __name__=='__main__':
 
     Options:
         <input>             Input audio file.
-        <output>            Output audio file. Should be WAV or FLAC. WAV is recommended.
+        <output>            Output audio file. WAV is recommended.
+                            For all available formats, see soundfile.available_formats()
                             Default is './ivdm_out.wav'
         <segment_length>    Length of segments used in making 4-D music. Measured in the number of beats.
                             Default is 32. Longer sengment lengths give cleaner music that resembles the
