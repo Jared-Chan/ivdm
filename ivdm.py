@@ -63,9 +63,14 @@ def tile_segments(path, beats, debug=False):
         end = start + interval
         tiled_segments[i][ start: end] *= factor**3
 
+
     combined_segments = np.sum(np.array(tiled_segments), axis=0)
     combined_duo.append(combined_segments)
 
+  if (len(combined_duo[0]) < len(combined_duo[1])):
+    combined_duo[1] = combined_duo[1][:len(combined_duo[0])]
+  elif (len(combined_duo[1]) < len(combined_duo[0])):
+    combined_duo[0] = combined_duo[0][:len(combined_duo[1])]
 
   return sr, combined_duo
 
