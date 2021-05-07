@@ -7,6 +7,7 @@ We listen to music in one order -- from start to finish. This program makes musi
 - `soundfile`
 - `numpy`
 - `scipy`
+- `ffmpeg` 
 
 
 ## How it works
